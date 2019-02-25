@@ -102,9 +102,22 @@ and is not tested with either JavaScript or XML folding enabled.
 Installation
 ------------
 
+### vim-plug
+
+The recommended installation method is via [vim-plug][6]---just add the following lines to
+your `~/.vimrc`:
+
+    Plug 'pangloss/vim-javascript'
+    Plug 'mxw/vim-jsx'
+
+To install from within vim, use the commands below.
+
+    :so ~/.vimrc
+    :PlugInstall
+
 ### Pathogen
 
-The recommended installation method is via [Pathogen][4].  Then simply execute
+You can also add vim-jsx using [Pathogen][4].  Then simply execute
 
     git clone https://github.com/mxw/vim-jsx.git ~/.vim/bundle/vim-jsx
 
@@ -148,3 +161,4 @@ or indent files for Javascript, you'll probably want to do something like
 [3]: https://github.com/mxw/vim-xhp             "mxw: vim-xhp"
 [4]: https://github.com/tpope/vim-pathogen      "tpope: vim-pathogen"
 [5]: https://github.com/VundleVim/Vundle.vim    "VundleVim: Vundle.vim"
+[6]: https://github.com/junegunn/vim-plug       "vim-plug"
