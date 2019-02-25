@@ -1,6 +1,19 @@
 vim-jsx
 =======
 
+**NOTE:** This repo is a fork of [mxw/vim-jsx](https://github.com/mxw/vim-jsx).
+While I normally do not like making a fork of such a commonly used plugin, it
+appears to have been abandoned with no activity over the last seven+ months.
+Notably in this fork, I have added support for the new shorthand fragment
+syntax, as well as manually cherry-picked in a few open PRs from mxw/vim-jsx.
+
+**NOTE 2:** While it's not required, I also recommend installing
+[amadeus/vim-xml](https://github.com/amadeus/vim-xml).  It's a fork of the
+built in xml syntax plugin that fixes a few bugs (like the final boolean prop
+in a JSX statement or the closing xml tag not matching the opening one).
+
+---------------
+
 Syntax highlighting and indenting for JSX.  JSX is a JavaScript syntax
 transformer which translates inline XML document fragments into JavaScript
 objects.  It was developed by Facebook alongside [React][1].
@@ -10,9 +23,9 @@ also need to choose a base JS highlighter.  [pangloss/vim-javascript][2] is the
 recommended package---it is vim-jsx's "official" dependency, and the only
 package against which it is regularly tested.  However, vim-jsx makes a best
 effort to support other JavaScript syntax packages, including:
-- pangloss/vim-javascript
-- jelera/vim-javascript-syntax
-- othree/yajs
+- [pangloss/vim-javascript](https://github.com/pangloss/vim-javascript)
+- [jelera/vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax)
+- [othree/yajs](https://github.com/othree/yajs.vim)
 
 Notably, the system vim JavaScript syntax is _not_ supported, due to its
 over-simplicity.  However, the system XML syntax package is an implicit
