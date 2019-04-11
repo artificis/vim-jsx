@@ -34,6 +34,10 @@ endif
 " jsBlock take care of ending the region.
 syn region xmlString contained start=+{+ end=++ contains=jsBlock,javascriptBlock
 
+" JSX comments inside XML tag should color as comment.  Note the trivial end pattern; we let
+" jsComment take care of ending the region.
+syn region xmlString contained start=+//+ end=++ contains=jsComment
+
 " JSX child blocks behave just like JSX attributes, except that (a) they are
 " syntactically distinct, and (b) they need the syn-extend argument, or else
 " nested XML end-tag patterns may end the outer jsxRegion.
@@ -47,10 +51,24 @@ syn region jsxChild contained start=+{+ end=++ contains=jsBlock,javascriptBlock
 " and generic Flow type annotations (http://flowtype.org/).
 syn region jsxRegion
   \ contains=@Spell,@XMLSyntax,jsxRegion,jsxChild,jsBlock,javascriptBlock
-  \ start=+\%(<\|\w\)\@<!<\z([a-zA-Z][a-zA-Z0-9:\-.]*\>[:,]\@!\)\([^>]*>(\)\@!+
+  \ start=+\%(<\|\w\)\@<!<\z([a-zA-Z_][a-zA-Z0-9:\-.]*\>[:,]\@!\)\([^>]*>(\)\@!+
   \ skip=+<!--\_.\{-}-->+
   \ end=+</\z1\_\s\{-}>+
   \ end=+/>+
+  \ keepend
+  \ extend
+
+" Shorthand fragment support
+"
+" Note that since the main jsxRegion contains @XMLSyntax, we cannot simply
+" adjust the regex above since @XMLSyntax will highlight the opening `<` as an
+" XMLError. Instead we create a new group with the same name that does not
+" include @XMLSyntax and instead uses matchgroup to get the same highlighting.
+syn region jsxRegion
+  \ contains=@Spell,jsxRegion,jsxChild,jsBlock,javascriptBlock
+  \ matchgroup=xmlTag
+  \ start=/<>/
+  \ end=/<\/>/
   \ keepend
   \ extend
 
